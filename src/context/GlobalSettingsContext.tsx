@@ -1,7 +1,15 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
-type ThemeVariant = 'azul' | 'beige' | 'menta' | 'oliva' | 'pastel';
+export type ThemeVariant = 'azul' | 'beige' | 'menta' | 'oliva' | 'pastel';
+
+export const THEMES: Record<ThemeVariant, { label: string; color: string }> = {
+    pastel: { label: 'Pastel', color: '#f8c3c5' },
+    azul: { label: 'Azul', color: '#a0c4ff' },
+    beige: { label: 'Beige', color: '#e6e0d4' },
+    menta: { label: 'Menta', color: '#b2f7ef' },
+    oliva: { label: 'Oliva', color: '#a0b084' },
+};
 
 interface GlobalSettings {
     webPageAudio: boolean;
@@ -11,6 +19,7 @@ interface GlobalSettings {
 
 interface GlobalSettingsContextType {
     settings: GlobalSettings;
+    themeColor: string;
     toggleAudio: () => void;
     setTheme: (theme: ThemeVariant) => void;
     setEnvelopeOpen: (isOpen: boolean) => void;
@@ -47,8 +56,10 @@ export const GlobalSettingsProvider = ({ children }: { children: ReactNode }) =>
         setSettings((prev) => ({ ...prev, isEnvelopeOpen: isOpen }));
     };
 
+    const themeColor = THEMES[settings.themeVariant].color;
+
     return (
-        <GlobalSettingsContext.Provider value={{ settings, toggleAudio, setTheme, setEnvelopeOpen }}>
+        <GlobalSettingsContext.Provider value={{ settings, themeColor, toggleAudio, setTheme, setEnvelopeOpen }}>
             {children}
         </GlobalSettingsContext.Provider>
     );
