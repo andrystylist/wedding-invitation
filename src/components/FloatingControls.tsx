@@ -15,7 +15,7 @@ export const FloatingControls = () => {
     ] as const;
 
     return (
-        <div className="fixed bottom-6 right-6 flex flex-col items-center gap-4 z-40">
+        <div className="absolute bottom-6 right-6 flex flex-col items-center gap-4 z-40">
 
             {/* Theme Switcher */}
             <div className="relative flex flex-col items-center">

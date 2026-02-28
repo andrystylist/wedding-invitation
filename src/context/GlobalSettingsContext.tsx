@@ -6,17 +6,20 @@ type ThemeVariant = 'azul' | 'beige' | 'menta' | 'oliva' | 'pastel';
 interface GlobalSettings {
     webPageAudio: boolean;
     themeVariant: ThemeVariant;
+    isEnvelopeOpen: boolean;
 }
 
 interface GlobalSettingsContextType {
     settings: GlobalSettings;
     toggleAudio: () => void;
     setTheme: (theme: ThemeVariant) => void;
+    setEnvelopeOpen: (isOpen: boolean) => void;
 }
 
 const defaultSettings: GlobalSettings = {
     webPageAudio: false,
     themeVariant: 'pastel',
+    isEnvelopeOpen: false,
 };
 
 const GlobalSettingsContext = createContext<GlobalSettingsContextType | undefined>(undefined);
@@ -40,8 +43,12 @@ export const GlobalSettingsProvider = ({ children }: { children: ReactNode }) =>
         setSettings((prev) => ({ ...prev, themeVariant }));
     };
 
+    const setEnvelopeOpen = (isOpen: boolean) => {
+        setSettings((prev) => ({ ...prev, isEnvelopeOpen: isOpen }));
+    };
+
     return (
-        <GlobalSettingsContext.Provider value={{ settings, toggleAudio, setTheme }}>
+        <GlobalSettingsContext.Provider value={{ settings, toggleAudio, setTheme, setEnvelopeOpen }}>
             {children}
         </GlobalSettingsContext.Provider>
     );

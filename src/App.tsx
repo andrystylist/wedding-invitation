@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { GlobalSettingsProvider } from './context/GlobalSettingsContext';
 import './styles/global.css';
 // @ts-ignore
@@ -12,13 +12,14 @@ import { InfoCard } from './components/InfoCard';
 import { Itinerary } from './components/Itinerary';
 import { ConfirmSection } from './components/RSVPModal';
 import { GiftsSection, Footer } from './components/GiftsAndFooter';
+import { useGlobalSettings } from './context/GlobalSettingsContext';
 
 function AppContent() {
-  const [isSealed, setIsSealed] = useState(true);
+  const { settings: { isEnvelopeOpen }, setEnvelopeOpen } = useGlobalSettings();
 
   useEffect(() => {
     // Re-initialize AOS when the envelope is opened and content is revealed
-    if (!isSealed) {
+    if (isEnvelopeOpen) {
       setTimeout(() => {
         AOS.init({
           duration: 600,
@@ -27,13 +28,13 @@ function AppContent() {
         });
       }, 500);
     }
-  }, [isSealed]);
+  }, [isEnvelopeOpen]);
 
   return (
-    <div className="min-h-screen">
-      {isSealed && <EntryEnvelope onOpen={() => setIsSealed(false)} />}
+    <div className="min-h-screen w-full md:max-w-md md:mx-auto relative bg-white shadow-2xl overflow-hidden">
+      {!isEnvelopeOpen && <EntryEnvelope onOpen={() => setEnvelopeOpen(true)} />}
 
-      {!isSealed && (
+      {isEnvelopeOpen && (
         <main className="animate-in fade-in duration-1000">
           <Hero
             names="Nuria & Juan"
@@ -72,7 +73,7 @@ function AppContent() {
         </main>
       )}
 
-      {!isSealed && <FloatingControls />}
+      {isEnvelopeOpen && <FloatingControls />}
     </div>
   );
 }

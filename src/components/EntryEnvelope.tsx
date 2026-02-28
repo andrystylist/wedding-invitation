@@ -20,7 +20,7 @@ export const EntryEnvelope = ({ onOpen }: EntryEnvelopeProps) => {
 
     return (
         <div
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-[#f4f1ea] transition-all duration-1000 ${isOpen ? 'opacity-0 pointer-events-none translate-y-[-10%]' : 'opacity-100'
+            className={`absolute inset-0 z-50 flex items-center justify-center bg-[#f4f1ea] transition-all duration-1000 ${isOpen ? 'opacity-0 pointer-events-none translate-y-[-10%]' : 'opacity-100'
                 }`}
         >
             <div className="relative text-center cursor-pointer" onClick={handleOpen}>
