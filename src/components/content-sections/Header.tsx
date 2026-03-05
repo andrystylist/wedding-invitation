@@ -58,7 +58,7 @@ function WeddingDate() {
   };
 
   return (
-    <div className="__className_e19656 not-inverse text-[#212121] text px-4 py-4 flex flex-col items-center justify-center">
+    <div className="quattrocento-text not-inverse text-[#212121] text px-4 py-4 flex flex-col items-center justify-center">
       <div className="text text-2xl">¡NOS CASAMOS!</div>
       <div className="text text-xl tracking-widest">
         —{" "}

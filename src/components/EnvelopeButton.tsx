@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import images from "@/assets/images";
 import { useGlobalSettings } from "@/hooks/useGlobalSettings";
 import ENV from "@/constants/env";
@@ -11,15 +11,18 @@ interface EnvelopeButtonProps {
 export default function EnvelopeButton({ onEnvelopeOpening, onOpenFinished }: EnvelopeButtonProps) {
   const { envelopeOpen, toggleEnvelopeOpen } = useGlobalSettings();
   const [openAnimationFinished, setOpenAnimationFinished] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (envelopeOpen) {
       if (onEnvelopeOpening) onEnvelopeOpening();
-      const timer = setTimeout(() => {
+
+      timeoutRef.current = setTimeout(() => {
         setOpenAnimationFinished(true);
         if (onOpenFinished) onOpenFinished();
       }, 1600); // 1.6 seconds for animation
-      return () => clearTimeout(timer);
+
+      return () => clearTimeout(timeoutRef.current as number);
     }
   }, [envelopeOpen, onEnvelopeOpening, onOpenFinished]);
 
