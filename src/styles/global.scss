@@ -1,6 +1,12 @@
 @use "./reset.scss";
 @use "./fonts.scss";
 
+body, :root, html, * {
+  font-family:
+    serif, "Times New Roman", Times, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
 .embla-carousel_embla {
   overflow: hidden;
   width: 100%;
@@ -45,4 +51,24 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+}
+
+.animate-lightpulse {
+  font-family: 'Times New Roman', Times, serif;
+  animation: lightpulse 2s ease-in-out infinite;
+}
+
+@keyframes lightpulse {
+  0% {
+    opacity: 1;
+    scale: 1;
+  }
+  50% {
+    opacity: 0.8;
+    scale: 1.1;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
 }
