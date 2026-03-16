@@ -63,7 +63,12 @@ export default function EnvelopeButton({ onEnvelopeOpening, onOpenFinished }: En
             <p className="title-font text-7xl">{ENV.COUPLE_SCND_NAME}</p>
           </div>
           <div className="stamp-section relative z-30 translate-x-1/4 translate-y-1/4 -rotate-45 hover:rotate-315 transition-all duration-300 group-active:scale-95">
-            <img alt="stamp" src={images.stamp} className="block w-28 object-cover opacity-100" />
+            <img
+              alt="stamp"
+              src={images.stamp}
+              className="block w-28 object-cover opacity-100"
+              loading="eager"
+            />
           </div>
         </div>
       </div>

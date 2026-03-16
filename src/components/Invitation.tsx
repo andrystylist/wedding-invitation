@@ -1,6 +1,9 @@
 import Header from "@/components/content-sections/Header";
 import MainPhoto from "@/components/content-sections/MainPhoto";
 import { useGlobalSettings } from "@/hooks/useGlobalSettings";
+import FirstQuote from "@/components/content-sections/FirstQuote";
+import SecondQuote from "@/components/content-sections/SecondQuote";
+import Place from "@/components/content-sections/Place";
 
 export default function Invitation() {
   const { envelopeOpen } = useGlobalSettings();
@@ -11,6 +14,9 @@ export default function Invitation() {
     >
       <Header />
       <MainPhoto />
+      <FirstQuote />
+      <SecondQuote />
+      <Place />
     </article>
   );
 }

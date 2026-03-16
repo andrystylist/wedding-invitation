@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@vis.gl/react-google-maps": "^1.7.1",
     "aos": "^2.3.4",
     "motion": "^12.35.0",
     "react": "^19.2.0",

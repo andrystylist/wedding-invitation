@@ -1,0 +1,91 @@
+@keyframes lightpulse {
+  0% {
+    opacity: 1;
+    scale: 1;
+  }
+  50% {
+    opacity: 0.8;
+    scale: 1.1;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes flower-sway {
+  0%,
+  100% {
+    transform: translateX(-1px) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(1px) rotate(2deg);
+  }
+}
+
+@keyframes date-wave {
+  0%,
+  100% {
+    transform: translateX(1.98405px) translateY(-1.98405px) translateZ(0.992024px) scale(1.0496)
+      rotateY(1.98405deg);
+  }
+  25% {
+    transform: translateX(-1.5px) translateY(2px) translateZ(1.5px) scale(1.02) rotateY(-2deg);
+  }
+  50% {
+    transform: translateX(0px) translateY(-3px) translateZ(2px) scale(1.06) rotateY(0deg);
+  }
+  75% {
+    transform: translateX(2px) translateY(1.5px) translateZ(0.5px) scale(1.03) rotateY(2deg);
+  }
+}
+
+.animate-lightpulse {
+  font-family: "Times New Roman", Times, serif;
+  animation: lightpulse 2s ease-in-out infinite;
+}
+
+@keyframes wind {
+  0% {
+    transform: translateX(-2px) translateY(2px) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(2px) translateY(-2px) rotate(2deg);
+  }
+  100% {
+    transform: translateX(-2px) translateY(2px) rotate(-2deg);
+  }
+}
+
+.animate-wind {
+  animation: wind 5s ease-in-out infinite;
+}
+
+@keyframes lightbounce {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-lightbounce {
+  animation: lightbounce 2.5s ease-in-out infinite;
+}
+
+@keyframes animate-lightrotation {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.animate-lightrotation {
+  animation: animate-lightrotation 3s ease-in-out infinite;
+}

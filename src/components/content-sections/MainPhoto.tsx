@@ -17,9 +17,7 @@ export default function MainPhoto() {
         <motion.div
           className="main-photo-cover relative overflow-hidden"
           animate={
-            isInView
-              ? { opacity: 1, filter: "blur(0px)" }
-              : { opacity: 0.5, filter: "blur(2px)" }
+            isInView ? { opacity: 1, filter: "blur(0px)" } : { opacity: 0.5, filter: "blur(2px)" }
           }
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
@@ -27,6 +25,7 @@ export default function MainPhoto() {
             className="h-auto w-full object-cover"
             src={images.mainPhoto}
             alt="img-cover"
+            loading="eager"
             animate={isInView ? { scale: 1 } : { scale: 1.1 }}
             transition={{ duration: 8, ease: "easeOut" }}
           />
@@ -34,6 +33,7 @@ export default function MainPhoto() {
         <img
           className="absolute -bottom-[25px] z-20 rotate-3 -scale-y-100 scale-x-[1.1]"
           src={images.divisorLine}
+          loading="eager"
           alt="img border"
         />
       </div>
