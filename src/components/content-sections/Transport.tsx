@@ -17,7 +17,7 @@ export default function Transport() {
           whileInView={{ opacity: 1, transition: { delay: 0.3, duration: 1.5 } }}
           viewport={{ amount: 0.8, once: true }}
         >
-          Autobús
+          Transporte
         </motion.h2>
         <motion.div
           className="text-[#212121] text quattrocento-text text-base tracking-wider mb-2 mt-4"
