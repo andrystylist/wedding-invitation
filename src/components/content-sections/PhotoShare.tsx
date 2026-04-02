@@ -65,7 +65,7 @@ export default function PhotoShare() {
       <img
         src={images.divisorToDark}
         alt="divisor-top"
-        className="pointer-events-none absolute -scale-x-100"
+        className="pointer-events-none relative -scale-x-100"
       />
       <div className="relative overflow-visible relative -top-0.5">
         <div

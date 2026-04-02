@@ -14,6 +14,7 @@ import Itinerary from "@/components/content-sections/Itinerary";
 import Album from "@/components/content-sections/Album";
 import Gift from "@/components/content-sections/Gift";
 import PhotoShare from "@/components/content-sections/PhotoShare";
+import SeeYou from "@/components/content-sections/SeeYou";
 
 export default function Invitation() {
   const { envelopeOpen } = useGlobalSettings();
@@ -41,6 +42,7 @@ export default function Invitation() {
       <Album />
       <Gift />
       <PhotoShare />
+      <SeeYou />
     </article>
   );
 }
