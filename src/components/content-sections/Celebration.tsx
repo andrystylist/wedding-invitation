@@ -58,7 +58,7 @@ export default function Celebration() {
           whileInView={{ opacity: 1, transition: { delay: 0.3, duration: 1.5 } }}
           viewport={{ amount: 0.8, once: true }}
         >
-          19:00 h
+          21:30 h
         </motion.p>
         <motion.button
           className={`mx-auto flex flex-col items-center justify-center gap-3 cursor-pointer`}
