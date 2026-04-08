@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import images from "@/assets/images";
+import ConfettiExplosion from "react-confetti-explosion";
 
 const CELEBRATION_DATE = import.meta.env.VITE_WEDDING_ISO_DATE as string;
 
@@ -43,32 +44,10 @@ function useCountdown(target: Date): TimeLeft {
   return timeLeft;
 }
 
-// Deterministic confetti pieces so they don't re-randomise on every render
-const CONFETTI_COLORS = ["#fff", "#f9e4b7", "#d4e8d0", "#f2b5c4", "#b5d0e8", "#f2d4b5", "#d0b5e8"];
-const CONFETTI_PIECES = Array.from({ length: 22 }, (_, i) => ({
-  id: i,
-  color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
-  left: `${(i * 4.7) % 100}%`,
-  delay: `${(i * 0.08) % 1.6}s`,
-  size: i % 3 === 0 ? "10px" : i % 3 === 1 ? "7px" : "5px",
-  borderRadius: i % 2 === 0 ? "50%" : "2px",
-}));
-
 const target = getTargetDate();
 
 export default function SeeYou() {
   const { days, hours, minutes, seconds, isOver } = useCountdown(target);
-
-  // Trigger a new confetti burst every 4 s once it's the wedding day
-  const [confettiBurst, setConfettiBurst] = useState(0);
-  useEffect(() => {
-    if (!isOver) return;
-    const id = setInterval(() => setConfettiBurst((n) => n + 1), 4000);
-    return () => clearInterval(id);
-  }, [isOver]);
-
-  // Key changes on each burst so the animation restarts
-  const confettiKey = useMemo(() => confettiBurst, [confettiBurst]);
 
   return (
     <>
@@ -104,28 +83,7 @@ export default function SeeYou() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
             >
-              {/* Confetti burst */}
-              <div
-                key={confettiKey}
-                className="confetti-container absolute inset-x-0 top-0 h-32"
-                aria-hidden
-              >
-                {CONFETTI_PIECES.map((p) => (
-                  <span
-                    key={p.id}
-                    className="confetti-piece"
-                    style={{
-                      left: p.left,
-                      backgroundColor: p.color,
-                      width: p.size,
-                      height: p.size,
-                      borderRadius: p.borderRadius,
-                      animationDelay: p.delay,
-                    }}
-                  />
-                ))}
-              </div>
-
+              <ConfettiExplosion />
               <p className="text-white text text-lg font-bold tracking-wider animate-celebration-float pt-2">
                 ¡Hoy es el gran día!
               </p>
